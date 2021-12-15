@@ -24,7 +24,7 @@ const ALEO_DIRECTORY: &str = ".aleo";
 /// Returns the directory for accessing resources from Aleo storage.
 /// The expected directory path to be returned is `~/.aleo/`.
 ///
-pub fn aleo_dir(dir: Option<&str>) -> PathBuf {
+pub fn aleo_dir(dir: Option<String>) -> PathBuf {
     // Locate the home directory as the starting point.
     // If called on a non-standard OS, use the repository directory.
     let mut path = match dir {
@@ -45,7 +45,7 @@ pub fn aleo_dir(dir: Option<&str>) -> PathBuf {
 /// In production mode, the expected directory path is `~/.aleo/storage/ledger-{network}`.
 /// In development mode, the expected directory path is `/path/to/repo/.ledger-{network}-{id}`.
 ///
-pub fn aleo_ledger_dir(network: u16, dev: Option<u16>, dir: Option<&str>) -> PathBuf {
+pub fn aleo_ledger_dir(network: u16, dev: Option<u16>, dir: Option<String>) -> PathBuf {
     // Retrieve the starting directory.
     let mut path = match dev.is_some() {
         // In development mode, the ledger is stored in the repository root directory.
@@ -79,7 +79,7 @@ pub fn aleo_ledger_dir(network: u16, dev: Option<u16>, dir: Option<&str>) -> Pat
 /// In production mode, the expected directory path is `~/.aleo/storage/prover-{network}`.
 /// In development mode, the expected directory path is `/path/to/repo/.prover-{network}-{id}`.
 ///
-pub fn aleo_prover_dir(network: u16, dev: Option<u16>, dir: Option<&str>) -> PathBuf {
+pub fn aleo_prover_dir(network: u16, dev: Option<u16>, dir: Option<String>) -> PathBuf {
     // Retrieve the starting directory.
     let mut path = match dev.is_some() {
         // In development mode, the prover is stored in the repository root directory.
